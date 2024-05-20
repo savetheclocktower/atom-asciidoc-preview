@@ -18,6 +18,10 @@ class AsciiDocPreviewView extends ScrollView
     @emitter = new Emitter
     @disposables = new CompositeDisposable
     @loaded = false
+    # NOTE: Don't know why this fixes it. Don't know how `attached` previously
+    # got called, because I don't see a code path that would've done it either
+    # within this repo or within Pulsar. But it seems to fix the problem.
+    @attached()
 
   attached: ->
     return if @isAttached
